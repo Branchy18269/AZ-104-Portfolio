@@ -1,0 +1,129 @@
+azure [ ~ ]$ ./deploy_lab03.sh 
+------------------------------------------------------------
+Starting Lab 03: Deploying Resources via Bicep
+Target Resource Group: RG-AZ104-PROD
+------------------------------------------------------------
+[BICEP-DEPLOY] Initiating deployment... this may take a moment.
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Resources/deployments/AZ104-Lab03-Deployment",
+  "location": null,
+  "name": "AZ104-Lab03-Deployment",
+  "properties": {
+    "correlationId": "7ff79e28-5bd4-4857-b03d-83eb87384e80",
+    "debugSetting": null,
+    "dependencies": [],
+    "diagnostics": null,
+    "duration": "PT20.4421623S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-AZ104-PROD",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/virtualNetworks"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104igovoi6353vqg",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Storage/storageAccounts"
+      }
+    ],
+    "outputs": {
+      "storageName": {
+        "type": "String",
+        "value": "staz104igovoi6353vqg"
+      },
+      "vnetId": {
+        "type": "String",
+        "value": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-AZ104-PROD"
+      }
+    },
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "storageAccountName": {
+        "type": "String",
+        "value": "staz104igovoi6353vqg"
+      },
+      "vnetName": {
+        "type": "String",
+        "value": "VNET-AZ104-PROD"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Network",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "virtualNetworks",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "7453598248816956226",
+    "templateLink": null,
+    "timestamp": "2026-03-26T21:30:43.939806+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "RG-AZ104-PROD",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
+[VERIFY] Fetching deployed resource details...
+------------------------------------------------------------
+LAB 03 COMPLETE
+Deployed Storage Account: staz104igovoi6353vqg
+Deployed Virtual Network: VNET-AZ104-PROD
+------------------------------------------------------------
+azure [ ~ ]$ 
