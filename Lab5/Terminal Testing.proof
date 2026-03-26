@@ -1,0 +1,11 @@
+azure [ ~ ]$ ./deploy_lab05.sh
+------------------------------------------------------------
+Starting Lab 05: Intersite Connectivity
+WARNING: Virtual Network Gateways typically take 30-45 minutes to deploy.
+------------------------------------------------------------
+[BICEP-DEPLOY] Provisioning Bastion and VPN Gateway...
+[INFO] Deployment started in 'No-Wait' mode.
+[INFO] You can monitor progress in the Portal or via: az deployment group show -g RG-AZ104-PROD -n AZ104-Lab05-Connectivity
+------------------------------------------------------------
+LAB 05 INITIATED
+------------------------------------------------------------
