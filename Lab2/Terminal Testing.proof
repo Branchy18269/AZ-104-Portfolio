@@ -1,0 +1,91 @@
+azure [ ~ ]$ ./deploy_lab02.sh
+------------------------------------------------------------
+Starting Lab 02: Governance and RBAC
+Targeting Location: eastus
+------------------------------------------------------------
+[RG-CREATE] Creating Resource Group: RG-AZ104-PROD...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "RG-AZ104-PROD",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": {
+    "Environment": "Production",
+    "Owner": "DRTC-IT",
+    "Project": "AZ104-SelfGuided"
+  },
+  "type": "Microsoft.Resources/resourceGroups"
+}
+[LOCK-APPLY] Applying CanNotDelete Lock to RG-AZ104-PROD...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Authorization/locks/Protect-Core-Resources",
+  "level": "CanNotDelete",
+  "name": "Protect-Core-Resources",
+  "notes": "Prevent accidental deletion of AZ104 lab resources for DRTC.",
+  "owners": null,
+  "resourceGroup": "RG-AZ104-PROD",
+  "type": "Microsoft.Authorization/locks"
+}
+[RBAC-ASSIGN] Assigning Virtual Machine Contributor to WillH@drtc.net...
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": "17c9ec46-df4b-412d-baa1-36dd614dfd08",
+  "createdOn": "2026-03-26T20:50:59.229787+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Authorization/roleAssignments/63ecffa7-79e4-49d3-b051-0d4117f3fbc4",
+  "name": "63ecffa7-79e4-49d3-b051-0d4117f3fbc4",
+  "principalId": "2397ac90-4c32-4da2-bebc-efae14dc35b8",
+  "principalName": "willh@drtc.net",
+  "principalType": "User",
+  "resourceGroup": "RG-AZ104-PROD",
+  "roleDefinitionId": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+  "roleDefinitionName": "Virtual Machine Contributor",
+  "scope": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD",
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "17c9ec46-df4b-412d-baa1-36dd614dfd08",
+  "updatedOn": "2026-03-26T20:50:59.229787+00:00"
+}
+Assignment successful.
+[POLICY-ASSIGN] Restricting VM sizes to B-Series (Cost Control)...
+{
+  "definitionVersion": "1.*.*",
+  "enforcementMode": "Default",
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Authorization/policyAssignments/Restrict-VM-Size",
+  "metadata": {
+    "createdBy": "17c9ec46-df4b-412d-baa1-36dd614dfd08",
+    "createdOn": "2026-03-26T20:56:08.7799633Z"
+  },
+  "name": "Restrict-VM-Size",
+  "parameters": {
+    "listOfAllowedSKUs": {
+      "value": [
+        "Standard_B1s",
+        "Standard_B2s"
+      ]
+    }
+  },
+  "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
+  "resourceGroup": "RG-AZ104-PROD",
+  "scope": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD",
+  "systemData": {
+    "createdAt": "2026-03-26T20:56:08.7562569Z",
+    "createdBy": "azureadmin@drtc.net",
+    "createdByType": "User",
+    "lastModifiedAt": "2026-03-26T20:56:08.7562569Z",
+    "lastModifiedBy": "azureadmin@drtc.net",
+    "lastModifiedByType": "User"
+  },
+  "type": "Microsoft.Authorization/policyAssignments"
+}
+------------------------------------------------------------
+LAB 02 COMPLETE
+Resource Group: RG-AZ104-PROD
+Lock Status: CanNotDelete
+Policy Applied: Restrict-VM-Size
+------------------------------------------------------------
+azure [ ~ ]$ 

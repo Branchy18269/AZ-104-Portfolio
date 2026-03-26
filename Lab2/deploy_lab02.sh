@@ -18,14 +18,15 @@ echo "Starting Lab 02: Governance and RBAC"
 echo "Targeting Location: $LOCATION"
 echo "------------------------------------------------------------"
 
+# Fetch the active Subscription ID dynamically
+SUB_ID=$(az account show --query id -o tsv)
+
 # --- Step 2: Resource Group Creation & Tagging ---
-# Creating a production-grade resource group with metadata
 echo "[RG-CREATE] Creating Resource Group: $RG_NAME..."
 az group create --name "$RG_NAME" --location "$LOCATION" \
     --tags Project="$TAG_PROJECT" Owner="$TAG_OWNER" Environment="Production"
 
 # --- Step 3: Resource Locking ---
-# Applying a 'CanNotDelete' lock to protect critical infrastructure
 echo "[LOCK-APPLY] Applying CanNotDelete Lock to $RG_NAME..."
 az lock create --name "Protect-Core-Resources" \
     --resource-group "$RG_NAME" \
@@ -33,10 +34,7 @@ az lock create --name "Protect-Core-Resources" \
     --notes "Prevent accidental deletion of AZ104 lab resources for DRTC."
 
 # --- Step 4: Role-Based Access Control (RBAC) ---
-# We will assign 'WillH' the 'Virtual Machine Contributor' role on this RG
-# Logic: First 5 of First + Last Initial
 USER_UPN="WillH@$DOMAIN"
-
 echo "[RBAC-ASSIGN] Assigning Virtual Machine Contributor to $USER_UPN..."
 
 # Retrieve the User Object ID
@@ -46,22 +44,23 @@ if [ -n "$USER_ID" ]; then
     az role assignment create \
         --assignee "$USER_ID" \
         --role "Virtual Machine Contributor" \
-        --resource-group "$RG_NAME"
+        --scope "/subscriptions/$SUB_ID/resourceGroups/$RG_NAME"
     echo "Assignment successful."
 else
     echo "[ERROR] User $USER_UPN not found. Ensure Lab 01 was completed."
 fi
 
-# --- Step 5: Azure Policy Assignment (The "Pro" Skill) ---
-# Assigning a policy to restrict allowed VM sizes (cost management)
+# --- Step 5: Azure Policy Assignment ---
 echo "[POLICY-ASSIGN] Restricting VM sizes to B-Series (Cost Control)..."
 POLICY_NAME="Restrict-VM-Size"
-POLICY_ID=$(az policy definition list --query "[?displayName=='Allowed virtual machine size skus'].name" -o tsv | head -n 1)
+
+# FIXED LOGIC: Dynamically query the policy ID using the strict case-sensitive display name "SKUs"
+POLICY_ID=$(az policy definition list --query "[?displayName=='Allowed virtual machine size SKUs'].name" -o tsv | head -n 1)
 
 az policy assignment create --name "$POLICY_NAME" \
     --policy "$POLICY_ID" \
     --params "{ \"listOfAllowedSKUs\": { \"value\": [ \"Standard_B1s\", \"Standard_B2s\" ] } }" \
-    --scope "/subscriptions/$(az account show --query id -o tsv)/resourceGroups/$RG_NAME"
+    --scope "/subscriptions/$SUB_ID/resourceGroups/$RG_NAME"
 
 # --- Step 6: Verification ---
 echo "------------------------------------------------------------"
