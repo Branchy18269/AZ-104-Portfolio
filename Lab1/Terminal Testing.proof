@@ -1,0 +1,76 @@
+azure [ ~ ]$ ./deploy_lab01.sh 
+------------------------------------------------------------
+Starting Project: Self Guided AZ104
+Using DRTC Resources for Domain: drtc.net
+------------------------------------------------------------
+[ID-CREATE] Creating core identity for: WillH@drtc.net
+[ID-UPDATE] Appending metadata to: WillH@drtc.net
+[ID-CREATE] Creating core identity for: AlisoT@drtc.net
+[ID-UPDATE] Appending metadata to: AlisoT@drtc.net
+[ID-CREATE] Creating core identity for: DuncaH@drtc.net
+[ID-UPDATE] Appending metadata to: DuncaH@drtc.net
+[GROUP-CREATE] Creating Static Security Group...
+{
+  "classification": null,
+  "createdDateTime": "2026-03-26T20:34:41Z",
+  "creationOptions": [],
+  "deletedDateTime": null,
+  "description": null,
+  "displayName": "DRTC-Internal-Staff",
+  "expirationDateTime": null,
+  "groupTypes": [],
+  "id": "58ff6c28-0693-4888-9ed6-0980b54745de",
+  "infoCatalogs": [],
+  "isAssignableToRole": null,
+  "mail": null,
+  "mailEnabled": false,
+  "mailNickname": "internalstaff",
+  "membershipRule": null,
+  "membershipRuleProcessingState": null,
+  "onPremisesDomainName": null,
+  "onPremisesLastSyncDateTime": null,
+  "onPremisesNetBiosName": null,
+  "onPremisesProvisioningErrors": [],
+  "onPremisesSamAccountName": null,
+  "onPremisesSecurityIdentifier": null,
+  "onPremisesSyncEnabled": null,
+  "preferredDataLocation": null,
+  "preferredLanguage": null,
+  "proxyAddresses": [],
+  "renewedDateTime": "2026-03-26T20:34:41Z",
+  "resourceBehaviorOptions": [],
+  "resourceProvisioningOptions": [],
+  "securityEnabled": true,
+  "securityIdentifier": "S-1-12-1-1493134376-1216874131-2148128414-3729082293",
+  "serviceProvisioningErrors": [],
+  "theme": null,
+  "uniqueName": null,
+  "visibility": null
+}
+[GROUP-DYNAMIC] Skipping CLI Dynamic Group Creation.
+--> Note: Dynamic groups require an Entra ID P2 trial. Best practice for AZ-104 is to build these manually in the Azure GUI.
+[INFO] Skipping License Assignment: No SKU_ID provided.
+------------------------------------------------------------
+LAB 01 COMPLETE
+DisplayName          UPN
+-------------------  ---------------------
+Alison Totten        AlisoT@drtc.net
+Andrew Veinotte      
+Azure Config Admin   
+Carter Wellard       
+Chloe Rodgerson      
+Dalton Goodwin-Peck  
+Duncan Hine          DuncaH@drtc.net
+Leland Jensen        
+Sysop A.Veinotte     
+Sysop L.Jensen       
+Sysop W.Hyndman     
+Will Hyndman         willh@drtc.net
+------------------------------------------------------------
+azure [ ~ ]$ 
+
+
+
+
+Note: Emails have been removed for non-associated individuals, as per company policy
+The willh@drtc.net email exists as a Hybrid User Account, and was not created, but was modified. 

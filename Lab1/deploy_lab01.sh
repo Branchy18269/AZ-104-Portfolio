@@ -8,11 +8,8 @@
 # ==============================================================================
 
 # --- Step 1: Configuration ---
-# Defaults to drtc.net; can be overridden by passing an argument: ./deploy_lab01.sh contoso.com
 DOMAIN="${1:-drtc.net}"
 PASSWORD="ComplexPassword123!"
-
-# SKU_ID for license assignment (e.g., Microsoft 365 E5)
 SKU_ID="ENTER_YOUR_SKUID_HERE" 
 
 echo "------------------------------------------------------------"
@@ -34,15 +31,22 @@ for full_name in "${target_users[@]}"; do
     USERNAME="${prefix}${suffix}"
     UPN="$USERNAME@$DOMAIN"
     
-    echo "[ID-CREATE] Creating: $UPN"
+    echo "[ID-CREATE] Creating core identity for: $UPN"
     
+    # NEW LOGIC: Create the core user account first
     az ad user create \
         --display-name "$full_name" \
         --password "$PASSWORD" \
-        --user-principal-name "$UPN" \
-        --department "IT" \
-        --job-title "Technical Consultant" \
-        --force-change-password-next-login true
+        --user-principal-name "$UPN"
+        
+    echo "[ID-UPDATE] Appending metadata to: $UPN"
+    
+    # NEW LOGIC: Direct Graph API call to update metadata
+    az rest \
+        --method PATCH \
+        --uri "https://graph.microsoft.com/v1.0/users/$UPN" \
+        --headers "Content-Type=application/json" \
+        --body '{"department":"IT", "jobTitle":"Technical Consultant"}'
 done
 
 # --- Step 4: Security Groups ---
@@ -50,14 +54,8 @@ echo "[GROUP-CREATE] Creating Static Security Group..."
 az ad group create --display-name "DRTC-Internal-Staff" --mail-nickname "internalstaff"
 
 # --- Step 5: Dynamic Groups (REQUIRES ENTRA ID P1/P2) ---
-# NOTE: This feature is part of the premium tier. 
-# It automates membership based on the 'Department' attribute set in Step 3.
-echo "[GROUP-DYNAMIC] Creating Dynamic IT Group... (Requires P1/P2 License)"
-az ad group create \
-    --display-name "DRTC-Dynamic-IT" \
-    --mail-nickname "dyn-it" \
-    --membership-rule "(user.department -eq 'IT')" \
-    --membership-rule-processing-state "On"
+echo "[GROUP-DYNAMIC] Skipping CLI Dynamic Group Creation."
+echo "--> Note: Dynamic groups require an Entra ID P2 trial. Best practice for AZ-104 is to build these manually in the Azure GUI."
 
 # --- Step 6: License Assignment ---
 if [ "$SKU_ID" != "ENTER_YOUR_SKUID_HERE" ]; then
