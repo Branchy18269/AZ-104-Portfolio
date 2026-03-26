@@ -25,6 +25,7 @@ Every resource—from identity management to automated backups—is deployed usi
 ---
 
 ## Core Engineering Principles
+## Disclaimer: .proof files are Terminal Outputs, and openable in any text editor
 
 ### 1. Identity Standard (DRTC-ID)
 To simulate real-world enterprise constraints, all identities follow the **DRTC Standard**:
