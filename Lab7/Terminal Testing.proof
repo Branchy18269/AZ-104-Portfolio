@@ -1,0 +1,192 @@
+azure [ ~ ]$ ./deploy_lab07.sh
+------------------------------------------------------------
+Starting Lab 07: Advanced Azure Storage
+Targeting Resource Group: RG-AZ104-PROD
+------------------------------------------------------------
+[NETWORK-PREP] Enabling Microsoft.Storage Service Endpoint on Subnet-Core...
+{
+  "addressPrefix": "10.1.0.0/24",
+  "delegations": [],
+  "etag": "W/\"e9e7e8c4-695e-4ccb-a34e-841bd979dd0a\"",
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST/subnets/Subnet-Core",
+  "name": "Subnet-Core",
+  "privateEndpointNetworkPolicies": "Disabled",
+  "privateLinkServiceNetworkPolicies": "Enabled",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "RG-AZ104-PROD",
+  "serviceEndpoints": [
+    {
+      "locations": [
+        "eastus",
+        "westus",
+        "westus3"
+      ],
+      "provisioningState": "Succeeded",
+      "service": "Microsoft.Storage"
+    }
+  ],
+  "type": "Microsoft.Network/virtualNetworks/subnets"
+}
+[BICEP-DEPLOY] Provisioning Secure Storage and File Shares...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Resources/deployments/AZ104-Lab07-Storage",
+  "location": null,
+  "name": "AZ104-Lab07-Storage",
+  "properties": {
+    "correlationId": "ed4ad1bc-cd41-4660-95dc-7ebdd14707ed",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "staz104advigovoi6353vqg",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg/fileServices/default",
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceName": "staz104advigovoi6353vqg/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg/fileServices/default",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "staz104advigovoi6353vqg/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/fileServices"
+          }
+        ],
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg/fileServices/default/shares/drtc-backups",
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceName": "staz104advigovoi6353vqg/default/drtc-backups",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices/shares"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT24.7675372S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg/fileServices/default",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Storage/storageAccounts/staz104advigovoi6353vqg/fileServices/default/shares/drtc-backups",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices/shares"
+      }
+    ],
+    "outputs": {
+      "storageName": {
+        "type": "String",
+        "value": "staz104advigovoi6353vqg"
+      }
+    },
+    "parameters": {
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "storageAccountName": {
+        "type": "String",
+        "value": "staz104advigovoi6353vqg"
+      },
+      "vnetName": {
+        "type": "String",
+        "value": "VNET-DRTC-EAST"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/fileServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/fileServices/shares",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "18268358911055890436",
+    "templateLink": null,
+    "timestamp": "2026-03-26T22:49:15.159919+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "RG-AZ104-PROD",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
+[VERIFY] Retrieving Storage Access Keys...
+WARNING: [Warning] This output may compromise security by showing secrets. Learn more at: https://go.microsoft.com/fwlink/?linkid=2258669
+------------------------------------------------------------
+LAB 07 COMPLETE
+Storage Account: staz104advigovoi6353vqg
+File Share Created: drtc-backups
+Network Firewall: Enabled (Restricted to VNET-DRTC-EAST)
+------------------------------------------------------------
