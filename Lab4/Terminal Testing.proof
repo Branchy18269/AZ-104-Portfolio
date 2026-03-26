@@ -1,0 +1,164 @@
+azure [ ~ ]$ ./deploy_lab04.sh 
+------------------------------------------------------------
+Starting Lab 04: Global Virtual Network Peering
+------------------------------------------------------------
+[BICEP-DEPLOY] Provisioning multi-region networks...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Resources/deployments/AZ104-Lab04-Networking",
+  "location": null,
+  "name": "AZ104-Lab04-Networking",
+  "properties": {
+    "correlationId": "91b8f367-3c41-4f03-af01-3a797f9c246e",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "VNET-DRTC-EAST",
+            "resourceType": "Microsoft.Network/virtualNetworks"
+          },
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-WEST",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "VNET-DRTC-WEST",
+            "resourceType": "Microsoft.Network/virtualNetworks"
+          }
+        ],
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST/virtualNetworkPeerings/East-To-West",
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceName": "VNET-DRTC-EAST/East-To-West",
+        "resourceType": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "VNET-DRTC-EAST",
+            "resourceType": "Microsoft.Network/virtualNetworks"
+          },
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-WEST",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "VNET-DRTC-WEST",
+            "resourceType": "Microsoft.Network/virtualNetworks"
+          }
+        ],
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-WEST/virtualNetworkPeerings/West-To-East",
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceName": "VNET-DRTC-WEST/West-To-East",
+        "resourceType": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT13.2348897S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/virtualNetworks"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-EAST/virtualNetworkPeerings/East-To-West",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-WEST",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/virtualNetworks"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/virtualNetworks/VNET-DRTC-WEST/virtualNetworkPeerings/West-To-East",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "location1": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "location2": {
+        "type": "String",
+        "value": "westus"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Network",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus",
+              "westus"
+            ],
+            "properties": null,
+            "resourceType": "virtualNetworks",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "virtualNetworks/virtualNetworkPeerings",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "2158720894874794747",
+    "templateLink": null,
+    "timestamp": "2026-03-26T21:36:54.381831+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "RG-AZ104-PROD",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
+[VERIFY] Checking Peering Status...
+AllowForwardedTraffic    AllowGatewayTransit    AllowVirtualNetworkAccess    DoNotVerifyRemoteGateways    Name          PeerCompleteVnets    PeeringState    PeeringSyncLevel    ProvisioningState    ResourceGroup    ResourceGuid                          UseRemoteGateways
+-----------------------  ---------------------  ---------------------------  ---------------------------  ------------  -------------------  --------------  ------------------  -------------------  ---------------  ------------------------------------  -------------------
+True                     False                  True                         False                        East-To-West  True                 Connected       FullyInSync         Succeeded            RG-AZ104-PROD    1460094e-68e9-08f1-23d2-36a2e7c29c2f  False
+------------------------------------------------------------
+LAB 04 COMPLETE
+------------------------------------------------------------
