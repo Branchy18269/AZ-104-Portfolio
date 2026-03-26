@@ -1,0 +1,41 @@
+azure [ ~ ]$ ./deploy_lab08.sh
+------------------------------------------------------------
+Starting Lab 08: Compute Infrastructure
+Targeting Resource Group: RG-AZ104-PROD
+------------------------------------------------------------
+Enter Admin Password for DRTC VMs: 
+[BICEP-DEPLOY] Provisioning Availability Set and Windows VMs...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Resources/deployments/AZ104-Lab08-Compute",
+  "location": null,
+  "name": "AZ104-Lab08-Compute",
+  "properties": {
+    "correlationId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+    "duration": "PT6M42.184S",
+    "error": null,
+    "mode": "Incremental",
+    "outputResources": [
+      { "id": "/subscriptions/.../providers/Microsoft.Compute/availabilitySets/AS-DRTC-WEB" },
+      { "id": "/subscriptions/.../providers/Microsoft.Compute/virtualMachines/VM-WEB-01" },
+      { "id": "/subscriptions/.../providers/Microsoft.Compute/virtualMachines/VM-WEB-02" },
+      { "id": "/subscriptions/.../providers/Microsoft.Network/networkInterfaces/NIC-WEB-01" },
+      { "id": "/subscriptions/.../providers/Microsoft.Network/networkInterfaces/NIC-WEB-02" }
+    ],
+    "outputs": null,
+    "parameters": {
+      "adminUsername": { "type": "String", "value": "drtcadmin" },
+      "vmSize": { "type": "String", "value": "Standard_B2ats_v2" }
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2026-03-26T21:15:44.921345+00:00"
+  },
+  "resourceGroup": "RG-AZ104-PROD",
+  "type": "Microsoft.Resources/deployments"
+}
+
+------------------------------------------------------------
+LAB 08 COMPLETE
+VMs Provisioned: VM-WEB-01, VM-WEB-02
+IIS Installed: YES
+Load Balancer Integrated: YES
+------------------------------------------------------------
