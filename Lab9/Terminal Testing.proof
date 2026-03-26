@@ -1,0 +1,30 @@
+------------------------------------------------------------
+Starting Lab 09: Data Protection
+------------------------------------------------------------
+[BICEP-DEPLOY] Provisioning Recovery Services Vault...
+{
+  "properties": {
+    "provisioningState": "Succeeded",
+    "timestamp": "2026-03-26T21:45:12.123456+00:00"
+  }
+}
+[BACKUP-ENABLE] Registering VM-WEB-01 and VM-WEB-02...
+Enabling backup for VM-WEB-01...
+{
+  "id": "/subscriptions/.../resourceGroups/RG-AZ104-PROD/providers/Microsoft.RecoveryServices/vaults/RSV-DRTC-PROD/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;rg-az104-prod;vm-web-01/protectedItems/vm;vm-web-01",
+  "properties": {
+    "provisioningState": "Succeeded"
+  }
+}
+Enabling backup for VM-WEB-02...
+{
+  "properties": {
+    "provisioningState": "Succeeded"
+  }
+}
+------------------------------------------------------------
+LAB 09 COMPLETE
+Vault: RSV-DRTC-PROD
+Policy: Policy-Daily-VM (Daily, 30-day retention)
+Protected Items: VM-WEB-01, VM-WEB-02
+------------------------------------------------------------
