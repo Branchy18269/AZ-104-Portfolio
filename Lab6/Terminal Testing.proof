@@ -1,0 +1,122 @@
+azure [ ~ ]$ ./deploy_lab06.sh
+------------------------------------------------------------
+Starting Lab 06: Network Traffic Management
+Targeting Resource Group: RG-AZ104-PROD
+------------------------------------------------------------
+[BICEP-DEPLOY] Provisioning Load Balancer, Health Probes, and Rules...
+{
+  "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Resources/deployments/AZ104-Lab06-Traffic",
+  "location": null,
+  "name": "AZ104-Lab06-Traffic",
+  "properties": {
+    "correlationId": "4d1a3b48-f542-4963-858a-4cb850ae25dc",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/publicIPAddresses/PIP-LB-DRTC",
+            "resourceGroup": "RG-AZ104-PROD",
+            "resourceName": "PIP-LB-DRTC",
+            "resourceType": "Microsoft.Network/publicIPAddresses"
+          }
+        ],
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/loadBalancers/LB-DRTC-PROD",
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceName": "LB-DRTC-PROD",
+        "resourceType": "Microsoft.Network/loadBalancers"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT1.8461937S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/loadBalancers/LB-DRTC-PROD",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/loadBalancers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/ba23c603-3838-4f82-9f89-f3c905fcca05/resourceGroups/RG-AZ104-PROD/providers/Microsoft.Network/publicIPAddresses/PIP-LB-DRTC",
+        "identifiers": null,
+        "resourceGroup": "RG-AZ104-PROD",
+        "resourceType": "Microsoft.Network/publicIPAddresses"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "lbName": {
+        "type": "String",
+        "value": "LB-DRTC-PROD"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Network",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "publicIPAddresses",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "loadBalancers",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "12199267264883253736",
+    "templateLink": null,
+    "timestamp": "2026-03-26T21:45:33.984934+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "RG-AZ104-PROD",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
+[VERIFY] Fetching Load Balancer Public IP...
+------------------------------------------------------------
+LAB 06 COMPLETE
+Load Balancer Public IP: [REDACTED]
+Backend Pool: LB-Backend-Pool
+Status: Active and Monitoring Port 80
+------------------------------------------------------------

@@ -6,7 +6,7 @@ param lbName string = 'LB-DRTC-PROD'
 
 // 1. Public IP for the Load Balancer Frontend
 resource lbPip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
-  name: 'PIP-LB-DRTC'
+  name: 'PIP-LB-DRTC-WEST'
   location: location
   sku: { name: 'Standard' }
   properties: { publicIPAllocationMethod: 'Static' }
